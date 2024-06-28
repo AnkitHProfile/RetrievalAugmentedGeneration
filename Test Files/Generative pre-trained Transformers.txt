@@ -1,0 +1,24 @@
+Generative pre-trained transformers (GPT) are a type of large language model (LLM)[1][2][3] and a prominent framework for generative artificial intelligence.[4][5] They are artificial neural networks that are used in natural language processing tasks.[6] GPTs are based on the transformer architecture, pre-trained on large data sets of unlabelled text, and able to generate novel human-like content.[2][3] As of 2023, most LLMs have these characteristics[7] and are sometimes referred to broadly as GPTs.[8]
+
+The first GPT was introduced in 2018 by OpenAI.[9] OpenAI has released very influential GPT foundation models that have been sequentially numbered, to comprise its "GPT-n" series.[10] Each of these was significantly more capable than the previous, due to increased size (number of trainable parameters) and training. The most recent of these, GPT-4, was released in March 2023.[11] Such models have been the basis for their more task-specific GPT systems, including models fine-tuned for instruction following—which in turn power the ChatGPT chatbot service.[1]
+
+The term "GPT" is also used in the names and descriptions of such models developed by others. For example, other GPT foundation models include a series of models created by EleutherAI,[12] and seven models created by Cerebras in 2023.[13] Also, companies in different industries have developed task-specific GPTs in their respective fields, such as Salesforce's "EinsteinGPT" (for CRM)[14] and Bloomberg's "BloombergGPT" (for finance).[15]
+History
+Initial developments
+
+Generative pretraining (GP) was a long-established concept in machine learning applications.[16][17][18] It was originally used as a form of semi-supervised learning, as the model is trained first on an unlabelled dataset (pretraining step) by learning to generate datapoints in the dataset, and then it is trained to classify a labelled dataset.[19]
+
+While the unnormalized linear transformer dates back to 1992,[20][21][22] the modern transformer architecture was not available until 2017 when it was published by researchers at Google in a paper "Attention Is All You Need".[23] That development led to the emergence of large language models such as BERT in 2018[24] which was a pre-trained transformer (PT) but not designed to be generative (BERT was an "encoder-only" model).[25] Also around that time, in 2018, OpenAI published its article entitled "Improving Language Understanding by Generative Pre-Training", in which it introduced the first generative pre-trained transformer (GPT) system ("GPT-1").[26]
+
+Prior to transformer-based architectures, the best-performing neural NLP (natural language processing) models commonly employed supervised learning from large amounts of manually-labeled data. The reliance on supervised learning limited their use on datasets that were not well-annotated, and also made it prohibitively expensive and time-consuming to train extremely large language models.[26]
+
+The semi-supervised approach OpenAI employed to make a large-scale generative system—and was first to do with a transformer model—involved two stages: an unsupervised generative "pretraining" stage to set initial parameters using a language modeling objective, and a supervised discriminative "fine-tuning" stage to adapt these parameters to a target task.[26]
+Later developments
+
+Regarding more recent GPT foundation models, OpenAI published its first versions of GPT-3 in July 2020. There were three models, with 1B, 6.7B, 175B parameters, respectively named babbage, curie, and davinci (giving initials B, C, and D).[citation needed]
+
+In July 2021, OpenAI published Codex, a task-specific GPT model targeted for programming applications. This was developed by fine-tuning a 12B parameter version of GPT-3 (different from previous GPT-3 models) using code from GitHub.[27]
+
+In March 2022, OpenAI published two versions of GPT-3 that were fine-tuned for instruction-following (instruction-tuned), named davinci-instruct-beta (175B) and text-davinci-001,[28] and then started beta testing code-davinci-002.[29] text-davinci-002 was instruction-tuned from code-davinci-002. Both text-davinci-003 and ChatGPT were released in November 2022, with both building upon text-davinci-002 via reinforcement learning from human feedback (RLHF). text-davinci-003 is trained for following instructions (like its predecessors), whereas ChatGPT is further trained for conversational interaction with a human user.[30][31]
+
+OpenAI's most recent GPT foundation model, GPT-4, was released on March 14, 2023. It can be accessed directly by users via a premium version of ChatGPT, and is available to developers for incorporation into other products and services via OpenAI's API. Other producers of GPT foundation models include EleutherAI (with a series of models starting in March 2021)[12] and Cerebras (with seven models released in March 2023).[13]

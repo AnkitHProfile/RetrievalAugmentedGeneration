@@ -1,0 +1,124 @@
+Retrieval Augmented Generation (RAG)
+
+Analysis
+When a client provides a prompt to a LLM, the LLM uses its own knowledge that it collected during its training and compares it to the content from a source document (it might be online or offline), and forms a response that is provided to the client. This process ensures that the response has more accurate and updated information. A Retrieval Augmented Generation (RAG) system is split into 3 main components:
+Ingestion: clean, chunk, embed, and load your data to a vector DB
+Retrieval: query your vector DB for context
+Generation: attach the retrieved context to your prompt and pass it to an LLM
+
+Few Useful algorithms
+
+Okapi BM25 (BM – Best Matching) is a powerful ranking algorithm and valuable tool for enhancing search relevance and delivering more accurate and useful user results. It is a bag-of-words retrieval function that ranks a set of documents based on the query terms appearing in each document, regardless of their proximity within the document.
+
+TF-IDF (Term Frequency-Inverse Document Frequency): A statistical measure used to evaluate the importance of a word in a document relative to a collection of documents. It combines term frequency (how often a term appears in a document) and inverse document frequency (how common or rare a term is across all documents).
+
+Extending Familiarity towards few Technical terms
+
+1. Index
+It is a data structure that stores and organizes the vectors (arrays of information in numerical form) of document/information pieces in a way that helps us to retrieve efficiently. We can avoid the need to scan the entire dataset, in turn increasing the efficiency of this retrieval step by using the indexes.
+
+2. Vector Databases
+A vector database is used to find a similar item related to a query. This is done by calculating the distance between vectors in the multi-dimensional space. The two vectors are prompt-converted to-vector and documents-converted to-vector. If these both vectors are close to each other then they are considered similar. Consider vector database as a database full of embeddings.
+
+In this image, we can see the array of distances where smaller differences indicate a higher degree of similarity.
+
+3. LlamaIndex
+This is a framework for connecting your data to LLMs and getting the results into production. For example, we start with a source data like a PDFs, APIs, SQL or any other document and we would like to store this data in our LLM so that we can unlock the capabilities of, for instance, ChatGPT. This involves loading the data from somewhere and putting it into a storage system. So data structure is a part where we index, process and embed your data so that it can be retrieved by a language model and retrieval system later on. The next phase is retrieval and query interface where, given that the data is processed and stored in something like a vector database like active Loop, we can then perform retrieval to fetch relevant contexts. This includes QA, Summarization and more.
+
+Current RAG Stack for building a QA System
+
+Process:
+1. Split up documents into even chunks.
+2. Each chunk is a piece of raw text.
+3. Generate embedding for each chunk (example – OpenAI embeddings, sentence transformer).
+4. Store each chunk into a vector database.
+
+About Embeddings:
+
+1. Creating Embeddings
+Text to Vector: An embedding converts a text into a vector (a list of numbers) that captures the essential meaning of the text. For example, the sentence "The cat sat on the mat" might be represented as a vector like [0.1, 0.3, 0.7, ...].
+Pre-trained Models: OpenAI provides models that can generate these embeddings, trained on large datasets to understand language context and semantics.
+
+2. Usage in RAG
+Document Embeddings: All documents in the database are converted into embeddings and stored in a vector index.
+Query Embeddings: When a user submits a query, it is also converted into an embedding using the same OpenAI model.
+Similarity Search: The query embedding is compared against the document embeddings in the vector index to find the most similar documents. This is often done using measures like cosine similarity or Euclidean distance.
+3. The request body of an embedding may include the following components:
+ID of the model to use.
+Input string or array (for embedding multiple inputs in a single array)
+A unique identifier representing your end-user.
+
+In this image, we can see how similar objects have been grouped together in multi-dimensional space. These embeddings can be used for recommendation systems, search engines and text generation like ChatGPT.
+
+Different types of prompts
+
+1. Instructional Prompts:
+Directives: Commands that tell the model to perform a specific task.
+Questions: Asking specific questions to get direct answers.
+2. Completion Prompts:
+Text Completion: Providing an incomplete sentence or paragraph and asking the model to finish it.
+3. Creative Prompts:
+Story Generation: Prompts that ask the model to generate creative content like stories, poems, or songs.
+Dialogues: Creating conversations or dialogues.
+4. Descriptive Prompts:
+Explanations: Asking the model to explain concepts or phenomena.
+Descriptions: Requesting detailed descriptions of objects, scenes, or processes.
+5. Role-Playing Prompts:
+Assuming a Persona: Asking the model to respond as if it were a specific person or character.
+Situational: Placing the model in a specific scenario and asking for a response.
+6. Informational Prompts:
+Data Retrieval: Asking for specific facts or data.
+Summarization: Requesting a summary of provided text or information.
+7. Analytical Prompts:
+Comparisons: Asking the model to compare and contrast different concepts.
+Critiques: Requesting an evaluation or critique of an idea or piece of content.
+8. Instructional Step-by-Step Prompts:
+How-to Guides: Step-by-step instructions for completing a task.
+Procedures: Describing a process in detail.
+9. Conversational Prompts:
+Interactive Q&A: Simulating a back-and-forth question-and-answer session.
+Customer Support: Mimicking customer support interactions.
+10. Educational Prompts:
+Teaching: Explaining educational content in a simple manner.
+Practice Problems: Providing practice questions for educational purposes.
+Types of Advanced RAG
+
+1. Hierarchical RAG:
+Multi-level Retrieval: Uses multiple layers of retrieval where an initial retrieval phase finds broad relevant documents, and subsequent phases refine the search within those documents to extract more specific and detailed information.
+Example: First retrieve relevant articles, then retrieve specific paragraphs or sentences from those articles.
+2. Dynamic RAG:
+Adaptive Retrieval: Adjusts the retrieval strategy based on the context of the query and the user’s previous interactions, improving personalization and relevance.
+Example: Tailoring the search process based on user history or the specific domain of the query.
+3. Hybrid RAG:
+Combining Different Retrieval Methods: Integrates different retrieval techniques, such as combining traditional keyword-based search with semantic vector-based search to improve accuracy and coverage.
+Example: Using BM25 for initial document retrieval and then refining with vector embeddings for fine-grained search.
+4. Multi-modal RAG:
+Handling Different Data Types: Integrates and retrieves information from multiple data types, such as text, images, and audio, to provide more comprehensive and contextually relevant responses.
+Example: Retrieving and combining textual explanations with relevant images or diagrams.
+5. Reinforcement Learning-Enhanced RAG:
+Learning from Feedback: Employs reinforcement learning techniques to continually improve the retrieval and generation process based on user feedback and interaction outcomes.
+Example: Adjusting retrieval strategies based on user satisfaction ratings or corrections.
+
+Rough Idea of OpenAI API Usage
+
+1. Sign Up and Get API Key
+Sign Up for OpenAI: If you don’t already have an account, sign up on the OpenAI website.
+Get API Key: Once you have an account, log in to the OpenAI platform, navigate to the API section, and generate an API key. This key will be used to authenticate your requests.
+2. Install Required Libraries
+The command pip install openai can be used.
+3. Setting up the environment.
+Ensure the availability of the API key. Environment variable storage can be considered.
+export OPENAI_API_KEY='api-key'
+4. Example of usage of OpenAI API to generate a response using Python:
+
+This model would approximately support around 30,000 letters/characters. Assuming around 3,000 words per page, we can embed 10 pages at a time.
+
+Google Cloud Translate API
+
+1. URL – console.cloud.google.com/home/dashboard
+2. Create a key (can be in JSON format) using a service account.
+3. Enable the Cloud Translation API.
+4. Store the key in a .env file.
+5. Import this file to your code along with the Google Translation package.
+6. Introduce a text to the code that needs to be translated or a text whose language needs to be identified.
+7. The output can be used as a response for the end-user.
